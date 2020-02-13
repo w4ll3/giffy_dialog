@@ -32,7 +32,7 @@ class AssetGiffyDialog extends StatelessWidget {
     this.onCancelButtonPressed,
     this.description,
     this.onlyOkButton = false,
-    this.onOkButtonPressed,
+    this.onlyCancelButton = false,
     this.buttonOkText,
     this.buttonCancelText,
     this.buttonOkColor = Colors.green,
