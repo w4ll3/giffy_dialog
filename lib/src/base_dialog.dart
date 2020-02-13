@@ -40,7 +40,6 @@ class BaseGiffyDialog extends StatefulWidget {
     @required this.onOkButtonPressed,
     @required this.description,
     @required this.onlyOkButton,
-    @required this.onlyCancelButton,
     @required this.buttonOkText,
     @required this.buttonCancelText,
     @required this.buttonOkColor,
@@ -53,9 +52,8 @@ class BaseGiffyDialog extends StatefulWidget {
 
   final Widget imageWidget;
   final Text title;
-  final Text description;
+  final Widget description;
   final bool onlyOkButton;
-  final bool onlyCancelButton;
   final Text buttonOkText;
   final Text buttonCancelText;
   final Color buttonOkColor;
@@ -143,11 +141,11 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 16.0),
+                padding: const EdgeInsets.only(top: 8.0),
                 child: widget.title,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: widget.description,
               ),
               _buildButtonsBar(context)
@@ -176,7 +174,7 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 16.0),
+                padding: const EdgeInsets.only(top: 8.0),
                 child: widget.title,
               ),
               Padding(
@@ -193,7 +191,7 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
 
   Widget _buildButtonsBar(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       child: Row(
         mainAxisAlignment: !widget.onlyOkButton
             ? MainAxisAlignment.spaceEvenly
@@ -213,19 +211,17 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
                   ),
             )
           ],
-          if (!widget.onlyCancelButton) ...[
-            RaisedButton(
-              color: widget.buttonOkColor,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(widget.buttonRadius)),
-              onPressed: widget.onOkButtonPressed,
-              child: widget.buttonOkText ??
-                  Text(
-                    'OK',
-                    style: TextStyle(color: Colors.white),
-                  ),
-            ),
-          ],
+          RaisedButton(
+            color: widget.buttonOkColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(widget.buttonRadius)),
+            onPressed: widget.onOkButtonPressed,
+            child: widget.buttonOkText ??
+                Text(
+                  'OK',
+                  style: TextStyle(color: Colors.white),
+                ),
+          ),
         ],
       ),
     );
@@ -247,8 +243,8 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
                 0,
               )
             : null,
-        height: MediaQuery.of(context).size.height * 0.6,
-        width: MediaQuery.of(context).size.width * (isPortrait ? 0.8 : 0.6),
+        height: MediaQuery.of(context).size.height * 0.85,
+        width: MediaQuery.of(context).size.width * (isPortrait ? 0.7 : 0.9),
         child: Material(
           type: MaterialType.card,
           shape: RoundedRectangleBorder(
